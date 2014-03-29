@@ -185,11 +185,20 @@ cd
 wget -O speedtest_cli.py "https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py"
 wget -O bench-network.sh "https://raw.github.com/yurisshOS/debian7/master/bench-network.sh"
 wget -O ps_mem.py "https://raw.github.com/pixelb/ps_mem/master/ps_mem.py"
+curl http://script.jualssh.com/user-login.sh > user-login.sh
+curl http://script.jualssh.com/user-expire.sh > user-expire.sh
+curl http://script.jualssh.com/user-limit.sh > user-limit.sh
+echo "0 0 * * * root /root/user-expire.sh" > /etc/cron.d/user-expire
+sed -i '$ i\screen -AmdS limit /root/limit.sh' /etc/rc.local
 chmod +x bench-network.sh
 chmod +x speedtest_cli.py
 chmod +x ps_mem.py
+chmod +x user-login.sh
+chmod +x user-expire.sh
+chmod +x user-limit.sh
+chmod +x limit.sh
 
-# finalisasi
+# finishing
 chown -R www-data:www-data /home/vps/public_html
 service nginx start
 service php-fpm start
@@ -234,6 +243,9 @@ echo "screenfetch"  | tee -a log-install.txt
 echo "./ps_mem.py"  | tee -a log-install.txt
 echo "./speedtest_cli.py --share"  | tee -a log-install.txt
 echo "./bench-network.sh"  | tee -a log-install.txt
+echo "./user-login.sh" | tee -a log-install.txt
+echo "./user-expire.sh" | tee -a log-install.txt
+echo "./user-limit.sh 2" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Fitur lain"  | tee -a log-install.txt
 echo "----------"  | tee -a log-install.txt
