@@ -61,7 +61,7 @@ service vnstat restart
 # install screenfetch
 cd
 wget 'https://raw.github.com/yurisshOS/debian7/master/screeftech-dev'
-mv screenfech-dev /usr/bin/screenfetch
+mv screeftech-dev /usr/bin/screenfetch
 chmod +x /usr/bin/screenfetch
 echo "clear" >> .profile
 echo "screenfetch" >> .profile
