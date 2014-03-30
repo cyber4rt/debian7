@@ -188,7 +188,7 @@ wget -O speedtest_cli.py "https://raw.github.com/sivel/speedtest-cli/master/spee
 wget -O bench-network.sh "https://raw.github.com/yurisshOS/debian7/master/bench-network.sh"
 wget -O ps_mem.py "https://raw.github.com/pixelb/ps_mem/master/ps_mem.py"
 wget -O limit.sh "https://raw.github.com/yurisshOS/debian7/master/limit.sh"
-wget -O dropmon.sh "https://raw.github.com/yurisshOS/debian7/master/dropmon.sh"
+wget -O dropmon "https://raw.github.com/yurisshOS/debian7/master/dropmon"
 wget -O userlogin.sh "https://raw.github.com/yurisshOS/debian7/master/userlogin.sh"
 wget -O userexpired.sh "https://raw.github.com/yurisshOS/debian7/master/userexpired.sh"
 wget -O userlimit.sh "https://raw.github.com/yurisshOS/debian7/master/userlimit.sh"
@@ -224,7 +224,7 @@ chmod +x userlogin.sh
 chmod +x userexpired.sh
 chmod +x userlimit.sh
 chmod +x limit.sh
-chmod +x dropmon.sh
+chmod +x dropmon
 
 # finishing
 chown -R www-data:www-data /home/vps/public_html
@@ -274,7 +274,7 @@ echo "./bench-network.sh"  | tee -a log-install.txt
 echo "./user-login.sh" | tee -a log-install.txt
 echo "./user-expire.sh" | tee -a log-install.txt
 echo "./user-limit.sh 2" | tee -a log-install.txt
-echo "./dropmon.sh [port] contoh: ./dropmon.sh 443" | tee -a log-install.txt
+echo "sh dropmon [port] contoh: ./dropmon.sh 443" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Fitur lain"  | tee -a log-install.txt
 echo "----------"  | tee -a log-install.txt
