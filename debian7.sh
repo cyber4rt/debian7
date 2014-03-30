@@ -185,7 +185,7 @@ cd
 wget -O speedtest_cli.py "https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py"
 wget -O bench-network.sh "https://raw.github.com/yurisshOS/debian7/master/bench-network.sh"
 wget -O ps_mem.py "https://raw.github.com/pixelb/ps_mem/master/ps_mem.py"
-wget -O userlogin.sh http://script.jualssh.com/user-login.sh > user-login.sh
+wget -O userlogin.sh "https://raw.github.com/yurisshOS/debian7/master/userlogin.sh"
 wget -O userexpired.sh "https://raw.github.com/yurisshOS/debian7/master/userexpired.sh"
 wget -O userlimit.sh "https://raw.github.com/yurisshOS/debian7/master/userlimit.sh"
 echo "0 0 * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
