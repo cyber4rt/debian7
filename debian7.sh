@@ -26,7 +26,9 @@ service ssh restart
 # set repo
 wget -O /etc/apt/sources.list "https://raw.github.com/yurisshOS/debian7/master/sources.list.debian7"
 wget "http://www.dotdeb.org/dotdeb.gpg"
+wget "http://www.webmin.com/jcameron-key.asc"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
+cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 
 # remove unused
 apt-get -y --purge remove samba*;
@@ -58,7 +60,7 @@ service vnstat restart
 
 # install screenfetch
 cd
-wget 'https://raw.github.com/KittyKatt/screenFetch/master/screenfetch-dev'
+wget 'http://git.silverirc.com/cgit.cgi/screenfetch.git/plain/screenfetch-dev'
 mv screenfetch-dev /usr/bin/screenfetch
 chmod +x /usr/bin/screenfetch
 echo "clear" >> .profile
@@ -185,40 +187,40 @@ cd
 wget -O speedtest_cli.py "https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py"
 wget -O bench-network.sh "https://raw.github.com/yurisshOS/debian7/master/bench-network.sh"
 wget -O ps_mem.py "https://raw.github.com/pixelb/ps_mem/master/ps_mem.py"
-wget -O userlogin.sh http://script.jualssh.com/user-login.sh > user-login.sh
-wget -O userexpired.sh "https://raw.github.com/yurisshOS/debian7/master/userexpired.sh"
-wget -O userlimit.sh "https://raw.github.com/yurisshOS/debian7/master/userlimit.sh"
-echo "0 0 * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 5 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 10 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 15 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 20 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 25 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 30 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 35 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 40 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 45 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 50 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 55 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 5 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 10 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 15 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 20 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 25 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 30 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 35 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 40 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 45 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 50 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 55 /root/userlimit.sh" > /etc/cron.d/userlimit
-sed -i '$ i\screen -AmdS limit /root/limit.sh' /etc/rc.local
+wget -O userlogin.sh "https://raw.github.com/yurisshOS/debian7/master/userlogin.sh"
+# wget -O userexpired.sh "https://raw.github.com/yurisshOS/debian7/master/userexpired.sh"
+# wget -O userlimit.sh "https://raw.github.com/yurisshOS/debian7/master/userlimit.sh"
+# echo "0 0 * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
+# echo "0 0 * * * root sleep 5 /root/userexpired.sh" > /etc/cron.d/userexpired
+# echo "0 0 * * * root sleep 10 /root/userexpired.sh" > /etc/cron.d/userexpired
+# echo "0 0 * * * root sleep 15 /root/userexpired.sh" > /etc/cron.d/userexpired
+# echo "0 0 * * * root sleep 20 /root/userexpired.sh" > /etc/cron.d/userexpired
+# echo "0 0 * * * root sleep 25 /root/userexpired.sh" > /etc/cron.d/userexpired
+# echo "0 0 * * * root sleep 30 /root/userexpired.sh" > /etc/cron.d/userexpired
+# echo "0 0 * * * root sleep 35 /root/userexpired.sh" > /etc/cron.d/userexpired
+# echo "0 0 * * * root sleep 40 /root/userexpired.sh" > /etc/cron.d/userexpired
+# echo "0 0 * * * root sleep 45 /root/userexpired.sh" > /etc/cron.d/userexpired
+# echo "0 0 * * * root sleep 50 /root/userexpired.sh" > /etc/cron.d/userexpired
+# echo "0 0 * * * root sleep 55 /root/userexpired.sh" > /etc/cron.d/userexpired
+# echo "0 0 * * * root /root/userlimit.sh" > /etc/cron.d/userlimit
+# echo "0 0 * * * root sleep 5 /root/userlimit.sh" > /etc/cron.d/userlimit
+# echo "0 0 * * * root sleep 10 /root/userlimit.sh" > /etc/cron.d/userlimit
+# echo "0 0 * * * root sleep 15 /root/userlimit.sh" > /etc/cron.d/userlimit
+# echo "0 0 * * * root sleep 20 /root/userlimit.sh" > /etc/cron.d/userlimit
+# echo "0 0 * * * root sleep 25 /root/userlimit.sh" > /etc/cron.d/userlimit
+# echo "0 0 * * * root sleep 30 /root/userlimit.sh" > /etc/cron.d/userlimit
+# echo "0 0 * * * root sleep 35 /root/userlimit.sh" > /etc/cron.d/userlimit
+# echo "0 0 * * * root sleep 40 /root/userlimit.sh" > /etc/cron.d/userlimit
+# echo "0 0 * * * root sleep 45 /root/userlimit.sh" > /etc/cron.d/userlimit
+# echo "0 0 * * * root sleep 50 /root/userlimit.sh" > /etc/cron.d/userlimit
+# echo "0 0 * * * root sleep 55 /root/userlimit.sh" > /etc/cron.d/userlimit
+# sed -i '$ i\screen -AmdS limit /root/limit.sh' /etc/rc.local
 chmod +x bench-network.sh
 chmod +x speedtest_cli.py
 chmod +x ps_mem.py
 chmod +x user-login.sh
-chmod +x user-expire.sh
-chmod +x user-limit.sh
+# chmod +x user-expire.sh
+# chmod +x user-limit.sh
 
 # finishing
 chown -R www-data:www-data /home/vps/public_html
@@ -266,8 +268,8 @@ echo "./ps_mem.py"  | tee -a log-install.txt
 echo "./speedtest_cli.py --share"  | tee -a log-install.txt
 echo "./bench-network.sh"  | tee -a log-install.txt
 echo "./user-login.sh" | tee -a log-install.txt
-echo "./user-expire.sh" | tee -a log-install.txt
-echo "./user-limit.sh 2" | tee -a log-install.txt
+# echo "./user-expire.sh" | tee -a log-install.txt
+# echo "./user-limit.sh 2" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Fitur lain"  | tee -a log-install.txt
 echo "----------"  | tee -a log-install.txt
