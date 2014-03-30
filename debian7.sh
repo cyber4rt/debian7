@@ -220,9 +220,9 @@ sed -i '$ i\screen -AmdS limit /root/limit.sh' /etc/rc.local
 chmod +x bench-network.sh
 chmod +x speedtest_cli.py
 chmod +x ps_mem.py
-chmod +x user-login.sh
-chmod +x user-expire.sh
-chmod +x user-limit.sh
+chmod +x userlogin.sh
+chmod +x userexpired.sh
+chmod +x userlimit.sh
 chmod +x limit.sh
 chmod +x dropmon.sh
 
