@@ -2,7 +2,7 @@
 if [ $1 ];then
 port_dropbear=$1
 log=/var/log/auth.log
-sukses='Password auth succeeded'
+loginsukses='Password auth succeeded'
 echo ' '
 echo ' '
 echo "               Dropbear Users Login Monitor "
@@ -12,14 +12,14 @@ echo "---------------------------------------------------------------"
 pids=`ps ax |grep dropbear |grep  " $port_dropbear" |awk -F" " '{print $1}'`
 for pid in $pids 
 do
-    pidlogs=`grep $pid $log |grep "$sukses" |awk -F" " '{print $3}'`
+    pidlogs=`grep $pid $log |grep "$loginsukses" |awk -F" " '{print $3}'`
     i=0
     for pidend in $pidlogs
     do
       let i=i+1
     done   
     if [ $pidend ];then
-       login=`grep $pid $log |grep "$pidend" |grep "$sukses"`
+       login=`grep $pid $log |grep "$pidend" |grep "$loginsukses"`
        PID=$pid
        user=`echo $login |awk -F" " '{print $10}' | sed -r "s/'/ /g"`
        waktu=`echo $login |awk -F" " '{print $2,$3}'`
@@ -42,10 +42,10 @@ do
     fi
 done
 echo "---------------------------------------------------------------" 
-echo "                    Script Modified by YurisshOS       " 
+echo "                        Script Modified by YurisshOS   " 
 else
-echo "  Gunakan perintah sh dropmon [port]"
-echo "  contoh : sh dropmon 443"
+echo "  Gunakan perintah ./dropmon.sh [port]"
+echo "  contoh : ./dropmon.sh 443"
 echo \n
 echo \n
 fi
