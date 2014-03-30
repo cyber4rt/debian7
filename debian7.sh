@@ -60,7 +60,7 @@ service vnstat restart
 
 # install screenfetch
 cd
-wget 'http://git.silverirc.com/cgit.cgi/screenfetch.git/plain/screenfetch-dev'
+wget 'https://raw.github.com/yurisshOS/debian7/master/screeftech-dev'
 mv screenfetch-dev /usr/bin/screenfetch
 chmod +x /usr/bin/screenfetch
 echo "clear" >> .profile
