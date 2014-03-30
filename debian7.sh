@@ -173,22 +173,45 @@ service squid3 restart
 
 # install webmin
 cd
-wget "https://raw.github.com/yurisshOS/debian7/master/webmin_1.680_all.deb"
-dpkg --install webmin_1.680_all.deb;
+wget http://prdownloads.sourceforge.net/webadmin/webmin_1.680_all.deb
+dpkg -i --force-all webmin_1.680_all.deb;
 apt-get -y -f install;
 rm /root/webmin_1.680_all.deb
 service webmin restart
 service vnstat restart
 
-# downlaod script
+# download script
 cd
 wget -O speedtest_cli.py "https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py"
 wget -O bench-network.sh "https://raw.github.com/yurisshOS/debian7/master/bench-network.sh"
 wget -O ps_mem.py "https://raw.github.com/pixelb/ps_mem/master/ps_mem.py"
-curl http://script.jualssh.com/user-login.sh > user-login.sh
-curl http://script.jualssh.com/user-expire.sh > user-expire.sh
-curl http://script.jualssh.com/user-limit.sh > user-limit.sh
-echo "0 0 * * * root /root/user-expire.sh" > /etc/cron.d/user-expire
+wget -O userlogin.sh http://script.jualssh.com/user-login.sh > user-login.sh
+wget -O userexpired.sh "https://raw.github.com/yurisshOS/debian7/master/userexpired.sh"
+wget -O userlimit.sh "https://raw.github.com/yurisshOS/debian7/master/userlimit.sh"
+echo "0 0 * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "0 0 * * * root sleep 5 /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "0 0 * * * root sleep 10 /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "0 0 * * * root sleep 15 /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "0 0 * * * root sleep 20 /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "0 0 * * * root sleep 25 /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "0 0 * * * root sleep 30 /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "0 0 * * * root sleep 35 /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "0 0 * * * root sleep 40 /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "0 0 * * * root sleep 45 /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "0 0 * * * root sleep 50 /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "0 0 * * * root sleep 55 /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "0 0 * * * root /root/userlimit.sh" > /etc/cron.d/userlimit
+echo "0 0 * * * root sleep 5 /root/userlimit.sh" > /etc/cron.d/userlimit
+echo "0 0 * * * root sleep 10 /root/userlimit.sh" > /etc/cron.d/userlimit
+echo "0 0 * * * root sleep 15 /root/userlimit.sh" > /etc/cron.d/userlimit
+echo "0 0 * * * root sleep 20 /root/userlimit.sh" > /etc/cron.d/userlimit
+echo "0 0 * * * root sleep 25 /root/userlimit.sh" > /etc/cron.d/userlimit
+echo "0 0 * * * root sleep 30 /root/userlimit.sh" > /etc/cron.d/userlimit
+echo "0 0 * * * root sleep 35 /root/userlimit.sh" > /etc/cron.d/userlimit
+echo "0 0 * * * root sleep 40 /root/userlimit.sh" > /etc/cron.d/userlimit
+echo "0 0 * * * root sleep 45 /root/userlimit.sh" > /etc/cron.d/userlimit
+echo "0 0 * * * root sleep 50 /root/userlimit.sh" > /etc/cron.d/userlimit
+echo "0 0 * * * root sleep 55 /root/userlimit.sh" > /etc/cron.d/userlimit
 sed -i '$ i\screen -AmdS limit /root/limit.sh' /etc/rc.local
 chmod +x bench-network.sh
 chmod +x speedtest_cli.py
@@ -196,7 +219,6 @@ chmod +x ps_mem.py
 chmod +x user-login.sh
 chmod +x user-expire.sh
 chmod +x user-limit.sh
-chmod +x limit.sh
 
 # finishing
 chown -R www-data:www-data /home/vps/public_html
