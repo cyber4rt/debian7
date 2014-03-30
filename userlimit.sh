@@ -79,7 +79,7 @@ rm -f /tmp/pid
 rm -f /tmp/pid2
 rm -f /tmp/pids
 rm -f /tmp/sks
-exit 1
+exit 0
 ;;
 
 esac
