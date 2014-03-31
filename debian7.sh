@@ -194,31 +194,9 @@ wget -O userlimit.sh "https://raw.github.com/yurisshOS/debian7/master/userlimit.
 wget -O userlimitssh.sh "https://raw.github.com/yurisshOS/debian7/master/userlimitssh.sh"
 echo "0 0 * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
 echo "0 0 * * * root /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 5 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 10 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 15 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 20 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 25 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 30 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 35 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 40 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 45 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 50 /root/userlimit.sh" > /etc/cron.d/userlimit
-echo "0 0 * * * root sleep 55 /root/userlimit.sh" > /etc/cron.d/userlimit
 #echo "0 0 * * * root /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-#echo "0 0 * * * root sleep 5 /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-#echo "0 0 * * * root sleep 10 /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-#echo "0 0 * * * root sleep 15 /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-#echo "0 0 * * * root sleep 20 /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-#echo "0 0 * * * root sleep 25 /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-#echo "0 0 * * * root sleep 30 /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-#echo "0 0 * * * root sleep 35 /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-#echo "0 0 * * * root sleep 40 /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-#echo "0 0 * * * root sleep 45 /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-#echo "0 0 * * * root sleep 50 /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-#echo "0 0 * * * root sleep 55 /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-sed -i '$ i\screen -AmdS limit /root/userexpired.sh' /etc/rc.local
-sed -i '$ i\screen -AmdS limit /root/userlimit.sh' /etc/rc.local
+sed -i '$ i\screen -AmdS check /root/userexpired.sh' /etc/rc.local
+sed -i '$ i\screen -AmdS check /root/userlimit.sh' /etc/rc.local
 #sed -i '$ i\screen -AmdS limit /root/userlimitssh.sh' /etc/rc.local
 chmod +x bench-network.sh
 chmod +x speedtest_cli.py
