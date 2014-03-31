@@ -187,23 +187,11 @@ cd
 wget -O speedtest_cli.py "https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py"
 wget -O bench-network.sh "https://raw.github.com/yurisshOS/debian7/master/bench-network.sh"
 wget -O ps_mem.py "https://raw.github.com/pixelb/ps_mem/master/ps_mem.py"
-wget -O limit.sh "https://raw.github.com/yurisshOS/debian7/master/limit.sh"
-wget -O dropmon.sh "https://raw.github.com/yurisshOS/debian7/master/dropmon.sh"
+wget -O dropmon "https://raw.github.com/yurisshOS/debian7/master/dropmon"
 wget -O userlogin.sh "https://raw.github.com/yurisshOS/debian7/master/userlogin.sh"
 wget -O userexpired.sh "https://raw.github.com/yurisshOS/debian7/master/userexpired.sh"
 wget -O userlimit.sh "https://raw.github.com/yurisshOS/debian7/master/userlimit.sh"
 echo "0 0 * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 5 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 10 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 15 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 20 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 25 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 30 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 35 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 40 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 45 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 50 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 55 /root/userexpired.sh" > /etc/cron.d/userexpired
 echo "0 0 * * * root /root/userlimit.sh" > /etc/cron.d/userlimit
 echo "0 0 * * * root sleep 5 /root/userlimit.sh" > /etc/cron.d/userlimit
 echo "0 0 * * * root sleep 10 /root/userlimit.sh" > /etc/cron.d/userlimit
@@ -216,15 +204,14 @@ echo "0 0 * * * root sleep 40 /root/userlimit.sh" > /etc/cron.d/userlimit
 echo "0 0 * * * root sleep 45 /root/userlimit.sh" > /etc/cron.d/userlimit
 echo "0 0 * * * root sleep 50 /root/userlimit.sh" > /etc/cron.d/userlimit
 echo "0 0 * * * root sleep 55 /root/userlimit.sh" > /etc/cron.d/userlimit
-sed -i '$ i\screen -AmdS limit /root/limit.sh' /etc/rc.local
+sed -i '$ i\screen -AmdS limit /root/userlimit.sh' /etc/rc.local
 chmod +x bench-network.sh
 chmod +x speedtest_cli.py
 chmod +x ps_mem.py
 chmod +x userlogin.sh
 chmod +x userexpired.sh
 chmod +x userlimit.sh
-chmod +x limit.sh
-chmod +x dropmon.sh
+chmod +x dropmon
 
 # finishing
 chown -R www-data:www-data /home/vps/public_html
@@ -263,7 +250,7 @@ echo "bmon"  | tee -a log-install.txt
 echo "htop"  | tee -a log-install.txt
 echo "iftop"  | tee -a log-install.txt
 echo "mtr"  | tee -a log-install.txt
-echo "nethogs"  | tee -a log-install.txt
+echo "nethogs: nethogs venet0"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Script"  | tee -a log-install.txt
 echo "------"  | tee -a log-install.txt
@@ -271,10 +258,10 @@ echo "screenfetch"  | tee -a log-install.txt
 echo "./ps_mem.py"  | tee -a log-install.txt
 echo "./speedtest_cli.py --share"  | tee -a log-install.txt
 echo "./bench-network.sh"  | tee -a log-install.txt
-echo "./user-login.sh" | tee -a log-install.txt
-echo "./user-expire.sh" | tee -a log-install.txt
-echo "./user-limit.sh 2" | tee -a log-install.txt
-echo "./dropmon.sh [port] contoh: ./dropmon.sh 443" | tee -a log-install.txt
+echo "./userlogin.sh" | tee -a log-install.txt
+echo "./userexpired.sh" | tee -a log-install.txt
+echo "./userlimit.sh 2" | tee -a log-install.txt
+echo "sh dropmon [port] contoh: sh dropmon 443" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Fitur lain"  | tee -a log-install.txt
 echo "----------"  | tee -a log-install.txt
@@ -285,7 +272,8 @@ echo "Timezone : Asia/Jakarta"  | tee -a log-install.txt
 echo "Fail2Ban : [on]"  | tee -a log-install.txt
 echo "IPv6     : [off]"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo "Log Installasi --> /root/log-install.txt"  | tee -a log-install.txt
+echo "Script Modified by Yurssh OpenSource"  | tee -a log-install.txt
+echo "Thanks to Original Creator Kang Arie & Mikodemos"
 echo ""  | tee -a log-install.txt
 echo "SILAHKAN REBOOT VPS ANDA"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
