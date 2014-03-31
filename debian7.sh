@@ -187,7 +187,6 @@ cd
 wget -O speedtest_cli.py "https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py"
 wget -O bench-network.sh "https://raw.github.com/yurisshOS/debian7/master/bench-network.sh"
 wget -O ps_mem.py "https://raw.github.com/pixelb/ps_mem/master/ps_mem.py"
-wget -O limit.sh "https://raw.github.com/yurisshOS/debian7/master/limit.sh"
 wget -O dropmon "https://raw.github.com/yurisshOS/debian7/master/dropmon"
 wget -O userlogin.sh "https://raw.github.com/yurisshOS/debian7/master/userlogin.sh"
 wget -O userexpired.sh "https://raw.github.com/yurisshOS/debian7/master/userexpired.sh"
@@ -205,14 +204,13 @@ echo "0 0 * * * root sleep 40 /root/userlimit.sh" > /etc/cron.d/userlimit
 echo "0 0 * * * root sleep 45 /root/userlimit.sh" > /etc/cron.d/userlimit
 echo "0 0 * * * root sleep 50 /root/userlimit.sh" > /etc/cron.d/userlimit
 echo "0 0 * * * root sleep 55 /root/userlimit.sh" > /etc/cron.d/userlimit
-sed -i '$ i\screen -AmdS limit /root/limit.sh' /etc/rc.local
+sed -i '$ i\screen -AmdS limit /root/userlimit.sh' /etc/rc.local
 chmod +x bench-network.sh
 chmod +x speedtest_cli.py
 chmod +x ps_mem.py
 chmod +x userlogin.sh
 chmod +x userexpired.sh
 chmod +x userlimit.sh
-chmod +x limit.sh
 chmod +x dropmon
 
 # finishing
