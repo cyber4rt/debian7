@@ -252,7 +252,7 @@ echo "bmon"  | tee -a log-install.txt
 echo "htop"  | tee -a log-install.txt
 echo "iftop"  | tee -a log-install.txt
 echo "mtr"  | tee -a log-install.txt
-echo "nethogs"  | tee -a log-install.txt
+echo "nethogs: nethogs venet0"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Script"  | tee -a log-install.txt
 echo "------"  | tee -a log-install.txt
