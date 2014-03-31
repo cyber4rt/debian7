@@ -193,17 +193,6 @@ wget -O userlogin.sh "https://raw.github.com/yurisshOS/debian7/master/userlogin.
 wget -O userexpired.sh "https://raw.github.com/yurisshOS/debian7/master/userexpired.sh"
 wget -O userlimit.sh "https://raw.github.com/yurisshOS/debian7/master/userlimit.sh"
 echo "0 0 * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 5 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 10 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 15 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 20 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 25 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 30 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 35 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 40 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 45 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 50 /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root sleep 55 /root/userexpired.sh" > /etc/cron.d/userexpired
 echo "0 0 * * * root /root/userlimit.sh" > /etc/cron.d/userlimit
 echo "0 0 * * * root sleep 5 /root/userlimit.sh" > /etc/cron.d/userlimit
 echo "0 0 * * * root sleep 10 /root/userlimit.sh" > /etc/cron.d/userlimit
