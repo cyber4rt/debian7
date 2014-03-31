@@ -271,10 +271,10 @@ echo "screenfetch"  | tee -a log-install.txt
 echo "./ps_mem.py"  | tee -a log-install.txt
 echo "./speedtest_cli.py --share"  | tee -a log-install.txt
 echo "./bench-network.sh"  | tee -a log-install.txt
-echo "./user-login.sh" | tee -a log-install.txt
-echo "./user-expire.sh" | tee -a log-install.txt
-echo "./user-limit.sh 2" | tee -a log-install.txt
-echo "sh dropmon [port] contoh: ./dropmon.sh 443" | tee -a log-install.txt
+echo "./userlogin.sh" | tee -a log-install.txt
+echo "./userexpired.sh" | tee -a log-install.txt
+echo "./userlimit.sh 2" | tee -a log-install.txt
+echo "sh dropmon [port] contoh: sh dropmon 443" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Fitur lain"  | tee -a log-install.txt
 echo "----------"  | tee -a log-install.txt
@@ -285,7 +285,8 @@ echo "Timezone : Asia/Jakarta"  | tee -a log-install.txt
 echo "Fail2Ban : [on]"  | tee -a log-install.txt
 echo "IPv6     : [off]"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo "Log Installasi --> /root/log-install.txt"  | tee -a log-install.txt
+echo "Script Modified by Yurssh OpenSource"  | tee -a log-install.txt
+echo "Thanks to Original Creator Kang Arie & Mikodemos"
 echo ""  | tee -a log-install.txt
 echo "SILAHKAN REBOOT VPS ANDA"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
