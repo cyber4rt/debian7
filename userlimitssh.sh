@@ -72,8 +72,8 @@ rm -f /tmp/user2
 exit 0
 ;;
 *)
-  echo " gunakan perintah userlmtop 1 untuk limit 1 login saja"
-  echo " atau userlmtop 2  untuk melimit max 2 login"
+  echo " gunakan perintah userlimitssh 1 untuk limit 1 login saja"
+  echo " atau userlimitssh 2  untuk melimit max 2 login"
   echo " jika ada kritik saran soal program ini pm mikodemos"     
 rm -f /tmp/pid
 rm -f /tmp/pid2
