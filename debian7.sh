@@ -257,8 +257,8 @@ echo "./speedtest_cli.py --share"  | tee -a log-install.txt
 echo "./bench-network.sh"  | tee -a log-install.txt
 echo "./userlogin.sh" | tee -a log-install.txt
 echo "./userexpired.sh" | tee -a log-install.txt
-echo "./userlimit.sh 2" | tee -a log-install.txt
-echo "./userlimitssh.sh 2" | tee -a log-install.txt
+echo "./userlimit.sh 2 [ini utk melimit max 2 login]" | tee -a log-install.txt
+#echo "./userlimitssh.sh 2" | tee -a log-install.txt
 echo "sh dropmon [port] contoh: sh dropmon 443" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Fitur lain"  | tee -a log-install.txt
