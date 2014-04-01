@@ -193,13 +193,13 @@ wget -O userexpired.sh "https://raw.github.com/yurisshOS/debian7/master/userexpi
 wget -O userlimit.sh "https://raw.github.com/yurisshOS/debian7/master/userlimit.sh"
 wget -O userlimitssh.sh "https://raw.github.com/yurisshOS/debian7/master/userlimitssh.sh"
 wget -O autokill.sh "https://raw.github.com/yurisshOS/debian7/master/autokill.sh"
-echo "0 0 * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root /root/userlimit.sh" > /etc/cron.d/userlimit
+#echo "0 0 * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
+#echo "0 0 * * * root /root/userlimit.sh" > /etc/cron.d/userlimit
 #echo "0 0 * * * root /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-sed -i '$ i\screen -AmdS check /root/userexpired.sh' /etc/rc.local
-#sed -i '$ i\screen -AmdS check /root/userlimit.sh' /etc/rc.local
-sed -i '$ i\screen -AmdS check /root/autokill.sh' /etc/rc.local
+#sed -i '$ i\screen -AmdS limit /root/userexpired.sh' /etc/rc.local
+#sed -i '$ i\screen -AmdS limit /root/userlimit.sh' /etc/rc.local
 #sed -i '$ i\screen -AmdS limit /root/userlimitssh.sh' /etc/rc.local
+sed -i '$ i\screen -AmdS check /root/autokill.sh' /etc/rc.local
 chmod +x bench-network.sh
 chmod +x speedtest_cli.py
 chmod +x ps_mem.py
