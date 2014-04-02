@@ -276,6 +276,3 @@ echo ""  | tee -a log-install.txt
 echo "SILAHKAN REBOOT VPS ANDA"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "==============================================="  | tee -a log-install.txt
-./userlimit.sh 2
-./userexpired.sh
-./autokill.sh
