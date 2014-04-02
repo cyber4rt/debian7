@@ -92,20 +92,24 @@ service nginx restart
 #sed -i $MYIP2 /etc/iptables.up.rules;
 #iptables-restore < /etc/iptables.up.rules
 #service openvpn restart
-
+wget -O ezopenvpn.sh https://github.com/yurisshOS/debian7/blob/master/ezopenvpn.sh
+chmod+x ezopenvpn.sh
+./ezopenvpn.sh
+service openvpn restart
+cd
 
 # configure openvpn client config
-cd /etc/openvpn/
-wget -O /etc/openvpn/1194-client.ovpn "https://raw.github.com/yurisshOS/debian7/master/1194-client.conf"
-sed -i $MYIP2 /etc/openvpn/1194-client.ovpn;
-PASS=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 15 | head -n 1`;
-useradd -M -s /bin/false YurisshOS
-echo "YurisshOS:$PASS" | chpasswd
-echo "username" >> pass.txt
-echo "password" >> pass.txt
-tar cf client.tar 1194-client.ovpn pass.txt
-cp client.tar /home/vps/public_html/
-cd
+#cd /etc/openvpn/
+#wget -O /etc/openvpn/1194-client.ovpn "https://raw.github.com/yurisshOS/debian7/master/1194-client.conf"
+#sed -i $MYIP2 /etc/openvpn/1194-client.ovpn;
+#PASS=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 15 | head -n 1`;
+#useradd -M -s /bin/false YurisshOS
+#echo "YurisshOS:$PASS" | chpasswd
+#echo "username" >> pass.txt
+#echo "password" >> pass.txt
+#tar cf client.tar 1194-client.ovpn pass.txt
+#cp client.tar /home/vps/public_html/
+#cd
 
 # install badvpn
 wget -O /usr/bin/badvpn-udpgw "https://raw.github.com/yurisshOS/debian7/master/badvpn-udpgw"
