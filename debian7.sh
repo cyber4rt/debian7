@@ -100,7 +100,7 @@ sed -i $MYIP2 /etc/openvpn/1194-client.ovpn;
 PASS=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 15 | head -n 1`;
 useradd -M -s /bin/false YurisshOS
 echo "YurisshOS:$PASS" | chpasswd
-echo "username" > pass.txt
+echo "username" >> pass.txt
 echo "password" >> pass.txt
 tar cf client.tar 1194-client.ovpn pass.txt
 cp client.tar /home/vps/public_html/
@@ -192,18 +192,21 @@ wget -O userlogin.sh "https://raw.github.com/yurisshOS/debian7/master/userlogin.
 wget -O userexpired.sh "https://raw.github.com/yurisshOS/debian7/master/userexpired.sh"
 wget -O userlimit.sh "https://raw.github.com/yurisshOS/debian7/master/userlimit.sh"
 wget -O userlimitssh.sh "https://raw.github.com/yurisshOS/debian7/master/userlimitssh.sh"
-echo "0 0 * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
-echo "0 0 * * * root /root/userlimit.sh" > /etc/cron.d/userlimit
+wget -O autokill.sh "https://raw.github.com/yurisshOS/debian7/master/autokill.sh"
+#echo "0 0 * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
+#echo "0 0 * * * root /root/userlimit.sh" > /etc/cron.d/userlimit
 #echo "0 0 * * * root /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-sed -i '$ i\screen -AmdS check /root/userexpired.sh' /etc/rc.local
-sed -i '$ i\screen -AmdS check /root/userlimit.sh' /etc/rc.local
+#sed -i '$ i\screen -AmdS limit /root/userexpired.sh' /etc/rc.local
+#sed -i '$ i\screen -AmdS limit /root/userlimit.sh' /etc/rc.local
 #sed -i '$ i\screen -AmdS limit /root/userlimitssh.sh' /etc/rc.local
+sed -i '$ i\screen -AmdS check /root/autokill.sh' /etc/rc.local
 chmod +x bench-network.sh
 chmod +x speedtest_cli.py
 chmod +x ps_mem.py
 chmod +x userlogin.sh
 chmod +x userexpired.sh
 chmod +x userlimit.sh
+chmod +x autokill.sh
 #chmod +x userlimitssh.sh
 chmod +x dropmon
 
@@ -254,8 +257,8 @@ echo "./speedtest_cli.py --share"  | tee -a log-install.txt
 echo "./bench-network.sh"  | tee -a log-install.txt
 echo "./userlogin.sh" | tee -a log-install.txt
 echo "./userexpired.sh" | tee -a log-install.txt
-echo "./userlimit.sh 2" | tee -a log-install.txt
-echo "./userlimitssh.sh 2" | tee -a log-install.txt
+echo "./userlimit.sh 2 [ini utk melimit max 2 login]" | tee -a log-install.txt
+#echo "./userlimitssh.sh 2" | tee -a log-install.txt
 echo "sh dropmon [port] contoh: sh dropmon 443" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Fitur lain"  | tee -a log-install.txt
@@ -267,7 +270,7 @@ echo "Timezone : Asia/Jakarta"  | tee -a log-install.txt
 echo "Fail2Ban : [on]"  | tee -a log-install.txt
 echo "IPv6     : [off]"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo "Script Modified by Yurssh OpenSource"  | tee -a log-install.txt
+echo "Script Modified by Yurissh OpenSource"  | tee -a log-install.txt
 echo "Thanks to Original Creator Kang Arie & Mikodemos"
 echo ""  | tee -a log-install.txt
 echo "SILAHKAN REBOOT VPS ANDA"  | tee -a log-install.txt
