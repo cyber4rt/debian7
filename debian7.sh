@@ -81,7 +81,7 @@ service nginx restart
 
 # install openvpn
 wget -O /etc/openvpn/openvpn.tar "https://raw.github.com/yurisshOS/debian7/master/openvpn-debian.tar"
-d /etc/openvpn/
+cd /etc/openvpn/
 tar xf openvpn.tar
 wget -O /etc/openvpn/1194.conf "https://raw.github.com/yurisshOS/debian7/master/1194.conf"
 service openvpn restart
@@ -92,6 +92,9 @@ sed -i '$ i\iptables-restore < /etc/iptables.up.rules' /etc/rc.local
 sed -i $MYIP2 /etc/iptables.up.rules;
 iptables-restore < /etc/iptables.up.rules
 service openvpn restart
+#wget https://raw.github.com/cwaffles/ezopenvpn/master/ezopenvpn.sh --no-check-certificate -O ezopenvpn.sh
+#chmod +x ezopenvpn.sh
+#./ezopenvpn.sh
 
 # configure openvpn client config
 cd /etc/openvpn/
