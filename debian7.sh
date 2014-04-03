@@ -92,10 +92,6 @@ sed -i '$ i\iptables-restore < /etc/iptables.up.rules' /etc/rc.local
 sed -i $MYIP2 /etc/iptables.up.rules;
 iptables-restore < /etc/iptables.up.rules
 service openvpn restart
-wget -O ezopenvpn.sh https://github.com/yurisshOS/debian7/blob/master/ezopenvpn.sh
-chmod+x ezopenvpn.sh
-./ezopenvpn.sh
-service openvpn restart
 
 # configure openvpn client config
 cd /etc/openvpn/
@@ -231,8 +227,8 @@ service dropbear restart
 service fail2ban restart
 service squid3 restart
 service webmin restart
-rm -rf ~/.bash_history && history -c
-echo "unset HISTFILE" >> /etc/profile
+#rm -rf ~/.bash_history && history -c
+#echo "unset HISTFILE" >> /etc/profile
 
 # info
 clear
@@ -256,6 +252,7 @@ echo "bmon"  | tee -a log-install.txt
 echo "htop"  | tee -a log-install.txt
 echo "iftop"  | tee -a log-install.txt
 echo "mtr"  | tee -a log-install.txt
+echo "rkhunter"  | tee -a log-install.txt
 echo "nethogs: nethogs venet0"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Script"  | tee -a log-install.txt
