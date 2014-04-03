@@ -80,54 +80,31 @@ service php5-fpm restart
 service nginx restart
 
 # install openvpn
-#wget -O /etc/openvpn/openvpn.tar "https://raw.github.com/yurisshOS/debian7/master/openvpn-debian.tar"
-#d /etc/openvpn/
-#tar xf openvpn.tar
-#wget -O /etc/openvpn/1194.conf "https://raw.github.com/yurisshOS/debian7/master/1194.conf"
-#service openvpn restart
-#sysctl -w net.ipv4.ip_forward=1
-#sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
-#wget -O /etc/iptables.up.rules "https://raw.github.com/yurisshOS/debian7/master/iptables.up.rules"
-#sed -i '$ i\iptables-restore < /etc/iptables.up.rules' /etc/rc.local
-#sed -i $MYIP2 /etc/iptables.up.rules;
-#iptables-restore < /etc/iptables.up.rules
-#service openvpn restart
-#wget -O ezopenvpn.sh https://github.com/yurisshOS/debian7/blob/master/ezopenvpn.sh
-#chmod+x ezopenvpn.sh
-#./ezopenvpn.sh
-#service openvpn restart
-wget -O /etc/openvpn/openvpn.tar "http://uchiha-idfl.tk:81/Script/Debian/openvpn-debian.tar"
-cd /etc/openvpn/
+wget -O /etc/openvpn/openvpn.tar "https://raw.github.com/yurisshOS/debian7/master/openvpn-debian.tar"
+d /etc/openvpn/
 tar xf openvpn.tar
-wget -O /etc/openvpn/1194.conf "http://uchiha-idfl.tk:81/Script/Debian/1194.conf"
+wget -O /etc/openvpn/1194.conf "https://raw.github.com/yurisshOS/debian7/master/1194.conf"
 service openvpn restart
 sysctl -w net.ipv4.ip_forward=1
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
-wget -O /etc/iptables.up.rules "http://uchiha-idfl.tk:81/Script/Debian/iptables.up.rules"
+wget -O /etc/iptables.up.rules "https://raw.github.com/yurisshOS/debian7/master/iptables.up.rules"
 sed -i '$ i\iptables-restore < /etc/iptables.up.rules' /etc/rc.local
 sed -i $MYIP2 /etc/iptables.up.rules;
 iptables-restore < /etc/iptables.up.rules
 service openvpn restart
+wget -O ezopenvpn.sh https://github.com/yurisshOS/debian7/blob/master/ezopenvpn.sh
+chmod+x ezopenvpn.sh
+./ezopenvpn.sh
+service openvpn restart
 
 # configure openvpn client config
-#cd /etc/openvpn/
-#wget -O /etc/openvpn/1194-client.ovpn "https://raw.github.com/yurisshOS/debian7/master/1194-client.conf"
-#sed -i $MYIP2 /etc/openvpn/1194-client.ovpn;
-#PASS=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 15 | head -n 1`;
-#useradd -M -s /bin/false YurisshOS
-#echo "YurisshOS:$PASS" | chpasswd
-#echo "username" >> pass.txt
-#echo "password" >> pass.txt
-#tar cf client.tar 1194-client.ovpn pass.txt
-#cp client.tar /home/vps/public_html/
-#cd
 cd /etc/openvpn/
-wget -O /etc/openvpn/1194-client.ovpn "http://uchiha-idfl.tk:81/Script/Debian/1194-client.conf"
+wget -O /etc/openvpn/1194-client.ovpn "https://raw.github.com/yurisshOS/debian7/master/1194-client.conf"
 sed -i $MYIP2 /etc/openvpn/1194-client.ovpn;
 PASS=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 15 | head -n 1`;
-useradd -M -s /bin/false KangArie
-echo "KangArie:$PASS" | chpasswd
-echo "username" > pass.txt
+useradd -M -s /bin/false YurisshOS
+echo "YurisshOS:$PASS" | chpasswd
+echo "username" >> pass.txt
 echo "password" >> pass.txt
 tar cf client.tar 1194-client.ovpn pass.txt
 cp client.tar /home/vps/public_html/
@@ -142,13 +119,9 @@ cd
 #sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/rc.d/rc.local
 #chmod +x /usr/bin/badvpn-udpgw
 #screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
-wget -O /usr/bin/badvpn-udpgw "http://uchiha-idfl.tk:81/Script/badvpn-udpgw"
-if [ "$OS" == "x86_64" ]; then
-  wget -O /usr/bin/badvpn-udpgw "http://uchiha-idfl.tk:81/Script/badvpn-udpgw64"
-fi
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/rc.local
-chmod +x /usr/bin/badvpn-udpgw
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
+wget http://drop.groundworlds.tk/file/badvpn.sh
+chmod +x badvpn.sh
+./badvpn.sh
 
 # install mrtg
 wget -O /etc/snmp/snmpd.conf "https://raw.github.com/yurisshOS/debian7/master/snmpd.conf"
