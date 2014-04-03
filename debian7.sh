@@ -199,11 +199,12 @@ wget -O dropmon "https://raw.github.com/yurisshOS/debian7/master/dropmon"
 wget -O userlogin.sh "https://raw.github.com/yurisshOS/debian7/master/userlogin.sh"
 wget -O userexpired.sh "https://raw.github.com/yurisshOS/debian7/master/userexpired.sh"
 wget -O userlimit.sh "https://raw.github.com/yurisshOS/debian7/master/userlimit.sh"
-wget -O userlimitssh.sh "https://raw.github.com/yurisshOS/debian7/master/userlimitssh.sh"
+#wget -O userlimitssh.sh "https://raw.github.com/yurisshOS/debian7/master/userlimitssh.sh"
 wget -O autokill.sh "https://raw.github.com/yurisshOS/debian7/master/autokill.sh"
 #echo "0 0 * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
 #echo "0 0 * * * root /root/userlimit.sh" > /etc/cron.d/userlimit
 #echo "0 0 * * * root /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
+echo "0 0 * * * root /root/autokill.sh" > /etc/cron.d/autokill
 #sed -i '$ i\screen -AmdS limit /root/userexpired.sh' /etc/rc.local
 #sed -i '$ i\screen -AmdS limit /root/userlimit.sh' /etc/rc.local
 #sed -i '$ i\screen -AmdS limit /root/userlimitssh.sh' /etc/rc.local
