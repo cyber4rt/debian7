@@ -200,7 +200,7 @@ wget -O userlimit.sh "https://raw.github.com/yurisshOS/debian7/master/userlimit.
 wget -O autokill.sh "https://raw.github.com/yurisshOS/debian7/master/autokill.sh"
 echo "@reboot root /root/userexpired.sh" > /etc/cron.d/userexpired
 echo "@reboot root /root/userlimit.sh" > /etc/cron.d/userlimit
-#echo "0 0 * * * root /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
+echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
 echo "@reboot root /root/autokill.sh" > /etc/cron.d/autokill
 #sed -i '$ i\screen -AmdS limit /root/userexpired.sh' /etc/rc.local
 #sed -i '$ i\screen -AmdS limit /root/userlimit.sh' /etc/rc.local
