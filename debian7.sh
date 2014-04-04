@@ -205,7 +205,7 @@ wget -O autokill.sh "https://raw.github.com/yurisshOS/debian7/master/autokill.sh
 #sed -i '$ i\screen -AmdS limit /root/userexpired.sh' /etc/rc.local
 #sed -i '$ i\screen -AmdS limit /root/userlimit.sh' /etc/rc.local
 #sed -i '$ i\screen -AmdS limit /root/userlimitssh.sh' /etc/rc.local
-#sed -i '$ i\screen -AmdS check /root/autokill.sh' /etc/rc.local
+sed -i '$ i\screen -AmdS check /root/autokill.sh' /etc/rc.local
 chmod +x bench-network.sh
 chmod +x speedtest_cli.py
 chmod +x ps_mem.py
