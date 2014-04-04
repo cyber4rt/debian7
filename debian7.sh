@@ -218,6 +218,7 @@ chmod +x dropmon
 
 # finishing
 chown -R www-data:www-data /home/vps/public_html
+service cron restart
 service nginx start
 service php-fpm start
 service vnstat restart
