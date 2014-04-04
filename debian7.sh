@@ -72,7 +72,7 @@ rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.github.com/yurisshOS/debian7/master/nginx.conf"
 mkdir -p /home/vps/public_html
-echo "<pre>Setup by Yurissh OpenSource</pre>" > /home/vps/public_html/index.html
+echo "<pre>Modified by Yurissh OpenSource</pre>" > /home/vps/public_html/index.html
 echo "<?php phpinfo(); ?>" > /home/vps/public_html/info.php
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.github.com/yurisshOS/debian7/master/vps.conf"
 sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5/fpm/pool.d/www.conf
@@ -80,19 +80,21 @@ service php5-fpm restart
 service nginx restart
 
 # install openvpn
-#wget -O /etc/openvpn/openvpn.tar "https://raw.github.com/yurisshOS/debian7/master/openvpn-debian.tar"
-#cd /etc/openvpn/
-#tar xf openvpn.tar
-#wget -O /etc/openvpn/1194.conf "https://raw.github.com/yurisshOS/debian7/master/1194.conf"
-#service openvpn restart
-#sysctl -w net.ipv4.ip_forward=1
-#sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
-#wget -O /etc/iptables.up.rules "https://raw.github.com/yurisshOS/debian7/master/iptables.up.rules"
-#sed -i '$ i\iptables-restore < /etc/iptables.up.rules' /etc/rc.local
-#sed -i $MYIP2 /etc/iptables.up.rules;
-#iptables-restore < /etc/iptables.up.rules
-#service openvpn restart
-
+wget -O /etc/openvpn/openvpn.tar "https://raw.github.com/yurisshOS/debian7/master/openvpn-debian.tar"
+cd /etc/openvpn/
+tar xf openvpn.tar
+wget -O /etc/openvpn/1194.conf "https://raw.github.com/yurisshOS/debian7/master/1194.conf"
+service openvpn restart
+sysctl -w net.ipv4.ip_forward=1
+sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
+wget -O /etc/iptables.up.rules "https://raw.github.com/yurisshOS/debian7/master/iptables.up.rules"
+sed -i '$ i\iptables-restore < /etc/iptables.up.rules' /etc/rc.local
+sed -i $MYIP2 /etc/iptables.up.rules;
+iptables-restore < /etc/iptables.up.rules
+service openvpn restart
+#wget https://raw.github.com/cwaffles/ezopenvpn/master/ezopenvpn.sh --no-check-certificate -O ezopenvpn.sh
+#chmod +x ezopenvpn.sh
+#./ezopenvpn.sh
 
 # configure openvpn client config
 cd /etc/openvpn/
@@ -113,8 +115,10 @@ if [ "$OS" == "x86_64" ]; then
   wget -O /usr/bin/badvpn-udpgw "https://raw.github.com/yurisshOS/debian7/master/badvpn-udpgw64"
 fi
 sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/rc.local
+#sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/rc.d/rc.local
 chmod +x /usr/bin/badvpn-udpgw
 screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
+
 
 # install mrtg
 wget -O /etc/snmp/snmpd.conf "https://raw.github.com/yurisshOS/debian7/master/snmpd.conf"
@@ -192,11 +196,12 @@ wget -O dropmon "https://raw.github.com/yurisshOS/debian7/master/dropmon"
 wget -O userlogin.sh "https://raw.github.com/yurisshOS/debian7/master/userlogin.sh"
 wget -O userexpired.sh "https://raw.github.com/yurisshOS/debian7/master/userexpired.sh"
 wget -O userlimit.sh "https://raw.github.com/yurisshOS/debian7/master/userlimit.sh"
-wget -O userlimitssh.sh "https://raw.github.com/yurisshOS/debian7/master/userlimitssh.sh"
+#wget -O userlimitssh.sh "https://raw.github.com/yurisshOS/debian7/master/userlimitssh.sh"
 wget -O autokill.sh "https://raw.github.com/yurisshOS/debian7/master/autokill.sh"
-#echo "0 0 * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
-#echo "0 0 * * * root /root/userlimit.sh" > /etc/cron.d/userlimit
-#echo "0 0 * * * root /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
+echo "@reboot root /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "@reboot root /root/userlimit.sh" > /etc/cron.d/userlimit
+echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
+echo "@reboot root /root/autokill.sh" > /etc/cron.d/autokill
 #sed -i '$ i\screen -AmdS limit /root/userexpired.sh' /etc/rc.local
 #sed -i '$ i\screen -AmdS limit /root/userlimit.sh' /etc/rc.local
 #sed -i '$ i\screen -AmdS limit /root/userlimitssh.sh' /etc/rc.local
@@ -213,6 +218,7 @@ chmod +x dropmon
 
 # finishing
 chown -R www-data:www-data /home/vps/public_html
+service cron restart
 service nginx start
 service php-fpm start
 service vnstat restart
@@ -248,6 +254,7 @@ echo "bmon"  | tee -a log-install.txt
 echo "htop"  | tee -a log-install.txt
 echo "iftop"  | tee -a log-install.txt
 echo "mtr"  | tee -a log-install.txt
+echo "rkhunter"  | tee -a log-install.txt
 echo "nethogs: nethogs venet0"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Script"  | tee -a log-install.txt
