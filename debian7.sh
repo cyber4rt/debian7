@@ -198,10 +198,10 @@ wget -O userexpired.sh "https://raw.github.com/yurisshOS/debian7/master/userexpi
 wget -O userlimit.sh "https://raw.github.com/yurisshOS/debian7/master/userlimit.sh"
 #wget -O userlimitssh.sh "https://raw.github.com/yurisshOS/debian7/master/userlimitssh.sh"
 wget -O autokill.sh "https://raw.github.com/yurisshOS/debian7/master/autokill.sh"
-#echo "0 0 * * * root /root/userexpired.sh" > /etc/cron.d/userexpired
-#echo "0 0 * * * root /root/userlimit.sh" > /etc/cron.d/userlimit
+echo "@reboot root /root/userexpired.sh" > /etc/cron.d/userexpired
+echo "@reboot root /root/userlimit.sh" > /etc/cron.d/userlimit
 #echo "0 0 * * * root /root/userlimitssh.sh" > /etc/cron.d/userlimitssh
-#echo "0 0 * * * root /root/autokill.sh" > /etc/cron.d/autokill
+echo "@reboot root /root/autokill.sh" > /etc/cron.d/autokill
 #sed -i '$ i\screen -AmdS limit /root/userexpired.sh' /etc/rc.local
 #sed -i '$ i\screen -AmdS limit /root/userlimit.sh' /etc/rc.local
 #sed -i '$ i\screen -AmdS limit /root/userlimitssh.sh' /etc/rc.local
@@ -228,8 +228,8 @@ service dropbear restart
 service fail2ban restart
 service squid3 restart
 service webmin restart
-#rm -rf ~/.bash_history && history -c
-#echo "unset HISTFILE" >> /etc/profile
+rm -rf ~/.bash_history && history -c
+echo "unset HISTFILE" >> /etc/profile
 
 # info
 clear
@@ -283,6 +283,3 @@ echo ""  | tee -a log-install.txt
 echo "SILAHKAN REBOOT VPS ANDA"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "==============================================="  | tee -a log-install.txt
-./userlimit.sh 2
-./userexpired.sh
-./autokill.sh
